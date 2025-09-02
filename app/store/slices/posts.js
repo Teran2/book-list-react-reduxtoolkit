@@ -8,13 +8,13 @@ export const postsSlice = createSlice({
 				id: 1,
 				title: 'Starting 2021 Right',
 				categories: ['health'],
-				content: "I'm stating 2021 off the right way!",
+				content: 'I\'m starting 2021 off the right way!',
 			},
 			{
 				id: 2,
 				title: 'Learn to Code',
 				categories: ['career'],
-				content: "I'm learning to code!",
+				content: 'I\'m learning to code!',
 			},
 			{
 				id: 3,
@@ -24,9 +24,16 @@ export const postsSlice = createSlice({
 			},
 		],
 	},
-	reducers: {},
+	reducers: {
+		createPost: (state, action) => {
+			state.posts.push(action.payload);
+		},
+		deletePost: (state, action) => {
+			state.posts = state.posts.filter((post) => post.id !== parseInt(action.payload));
+		},
+	},
 });
 
-export const {} = postsSlice.actions;
+export const { deletePost, createPost } = postsSlice.actions;
 
 export default postsSlice.reducer;
